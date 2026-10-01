@@ -159,6 +159,16 @@ header nav a:hover{color:var(--accent)}
 .story-body p{margin:0;font-size:18px;line-height:1.8;color:var(--soft)}
 .story blockquote{margin:12px 0 0;max-width:760px;font-family:var(--serif);font-style:italic;font-size:clamp(24px,3vw,34px);line-height:1.4;color:var(--paper)}
 @media (max-width:820px){.story{padding-block:80px}}
+.founding{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px 40px;width:min(1072px,100%);padding:36px 40px;background:var(--ink);color:var(--paper)}
+.founding-copy{display:flex;flex-direction:column;gap:10px;flex:1 1 420px;min-width:0}
+.founding .eyebrow{color:var(--tan)}
+.founding h3{margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(30px,3.6vw,42px);line-height:1.1}
+.founding h3 em{color:var(--tan)}
+.founding p{margin:0;font-size:17px;line-height:1.6;color:var(--soft)}
+.founding .spots{font-size:14px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--tan)}
+.founding .btn{background:var(--tan);color:var(--ink)}
+.founding .btn:hover{background:var(--paper);color:var(--ink)}
+@media (max-width:820px){.founding{padding:28px 24px}}
 @media (max-width:820px){.about{padding-block:80px}}
 
 .social{display:flex;gap:14px;justify-content:center}
@@ -272,6 +282,7 @@ body.intro-on .hero-copy>*{animation-play-state:paused}
 </script>
 
 
+<a class="banner" href="#founding">Founding client offer: my first 5 clients get $100 off. Claim a spot &rarr;</a>
 <header>
   <nav aria-label="Main">
     <a href="#how">How it works</a>
@@ -394,6 +405,15 @@ body.intro-on .hero-copy>*{animation-play-state:paused}
     <a class="btn btn-solid" href="#contact">Call or text to start</a>
   </div>
   </div>
+  <div class="founding" id="founding">
+    <div class="founding-copy">
+      <span class="eyebrow">Founding client offer</span>
+      <h3>Be one of my first 5 clients and get <em>$100 off.</em></h3>
+      <p>Your Full Website is $600 instead of $700, or your Website Refresh is $300 instead of $400. In return, I just ask for an honest review once your site is live, and permission to show your site as an example of my work.</p>
+      <span class="spots">5 of 5 spots left</span>
+    </div>
+    <a class="btn" href="#contact">Claim my spot</a>
+  </div>
 </section>
 
 <section class="plans" id="plans">
@@ -462,6 +482,7 @@ body.intro-on .hero-copy>*{animation-play-state:paused}
     <label>Email<input id="f-email" name="email" type="email" autocomplete="email"></label>
     <label class="full">What do you need?
       <select id="f-need" name="need">
+        <option>Founding client offer ($100 off)</option>
         <option>Founding client offer ($100 off)</option>
         <option>A new website</option>
         <option>A refresh of my current website</option>
