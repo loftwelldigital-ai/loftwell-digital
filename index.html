@@ -253,6 +253,37 @@ body.intro-on .hero-copy>*{animation-play-state:paused}
 .signoff .dig{display:flex;align-items:center;gap:clamp(18px,4vw,40px);font-family:var(--sans);font-size:clamp(13px,1.6vw,16px);letter-spacing:.7em;padding-left:.7em;color:#2E3A2F}
 .signoff .dig::before,.signoff .dig::after{content:"";width:clamp(50px,9vw,100px);height:1px;background:#8C8B84}
 .signoff .so-tag{margin-top:26px;font-family:var(--sans);font-size:12px;letter-spacing:.45em;padding-left:.45em;color:#8C8B84}
+
+.hero .lede{max-width:680px;text-wrap:pretty}
+@media (max-width:520px){.bn-long{display:none}}
+/* Cleaner top: one-row header, slim banner, mobile menu */
+.banner{padding:10px 16px;font-size:12px;letter-spacing:1.8px;font-weight:500}
+.banner b{font-weight:600}
+header{position:sticky;top:0;z-index:50;grid-template-columns:auto 1fr auto;gap:32px;padding:18px var(--gutter);background:rgba(250,248,244,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.logo{order:1;align-items:flex-start}
+.logo b{font-size:28px;letter-spacing:4px}
+.logo span{font-size:12px;letter-spacing:6.5px}
+header nav{order:2;justify-content:center;gap:30px;font-size:12px}
+.head-cta{order:3;gap:22px}
+.head-cta .phone{font-size:13px}
+.head-cta .btn{padding:11px 20px;font-size:12px}
+.menu-btn{display:none;order:3;width:44px;height:44px;border:0;background:none;cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:7px;padding:0}
+.menu-btn span{display:block;width:24px;height:1.5px;background:var(--ink);transition:transform .25s}
+header.open .menu-btn span:first-child{transform:translateY(4.25px) rotate(45deg)}
+header.open .menu-btn span:last-child{transform:translateY(-4.25px) rotate(-45deg)}
+@media (max-width:1100px){header nav{gap:22px}.head-cta .phone{display:none}}
+@media (max-width:900px){
+  header{grid-template-columns:1fr auto;justify-items:stretch;text-align:left;padding:14px 20px;gap:0}
+  .logo{order:1;align-items:flex-start}
+  .logo b{font-size:24px}
+  .menu-btn{display:flex;grid-column:2;grid-row:1}
+  header nav{display:none;grid-column:1/-1;order:4;flex-direction:column;gap:0;padding:8px 0 4px}
+  header nav a{padding:14px 0;border-top:1px solid var(--line);font-size:13px}
+  .head-cta{display:none;grid-column:1/-1;order:5;flex-direction:column;align-items:stretch;gap:12px;padding:6px 0 10px}
+  .head-cta .phone{display:block;text-align:center;padding:8px 0}
+  .head-cta .btn{padding:16px;font-size:13px}
+  header.open nav,header.open .head-cta{display:flex}
+}
 </style>
 </head>
 <body>
@@ -282,7 +313,7 @@ body.intro-on .hero-copy>*{animation-play-state:paused}
 </script>
 
 
-<a class="banner" href="#founding">Founding client offer: my first 5 clients get $100 off. Claim a spot &rarr;</a>
+<a class="banner" href="#founding"><span class="bn-long">Founding offer: </span><b>$100 off</b> for my first 5 clients &rarr;</a>
 <header>
   <nav aria-label="Main">
     <a href="#how">How it works</a>
@@ -292,6 +323,7 @@ body.intro-on .hero-copy>*{animation-play-state:paused}
     <a href="#plans">Monthly plans</a>
   </nav>
   <a class="logo" href="#top" aria-label="Loftwell Digital home"><b>LOFTWELL</b><span>DIGITAL</span></a>
+  <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
   <div class="head-cta">
     <a class="phone" href="tel:7153142432">715-314-2432</a>
     <a class="btn btn-solid" href="#contact">Get started</a>
@@ -531,6 +563,11 @@ body.intro-on .hero-copy>*{animation-play-state:paused}
       .catch(function(){btn.disabled=false;btn.textContent='Say hello';status.textContent="Your message didn't send. Please call or text 715-314-2432, or email loftwelldigital@gmail.com.";});
   });
 })();
+</script>
+<script>
+(function(){var h=document.querySelector('header'),b=h&&h.querySelector('.menu-btn');if(!b)return;
+b.addEventListener('click',function(){var o=h.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+h.querySelectorAll('nav a,.head-cta a').forEach(function(a){a.addEventListener('click',function(){h.classList.remove('open');b.setAttribute('aria-expanded','false')})});})();
 </script>
 </body>
 </html>
