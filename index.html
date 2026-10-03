@@ -3,7 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Loftwell Digital | Websites for Local Businesses</title>
+<title>Website Design for Small Businesses in Wisconsin | Loftwell Digital</title>
+<link rel="canonical" href="https://loftwelldigital-ai.github.io/loftwell-digital/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Loftwell Digital","description":"Custom website design and website refreshes for local small businesses. I build it first, and you only pay if you love it.","url":"https://loftwelldigital-ai.github.io/loftwell-digital/","telephone":"+1-715-314-2432","email":"loftwelldigital@gmail.com","image":"https://loftwelldigital-ai.github.io/loftwell-digital/preview.png","logo":"https://loftwelldigital-ai.github.io/loftwell-digital/apple-touch-icon.png","priceRange":"$300-$700","areaServed":[{"@type":"State","name":"Wisconsin"},{"@type":"Country","name":"United States"}],"address":{"@type":"PostalAddress","addressRegion":"WI","addressCountry":"US"},"sameAs":["https://www.instagram.com/loftwelldigital/","https://www.tiktok.com/@loftwelldigital"],"makesOffer":[{"@type":"Offer","name":"Full Website","price":"700","priceCurrency":"USD"},{"@type":"Offer","name":"Website Refresh","price":"400","priceCurrency":"USD"}]}</script>
 <link rel="icon" type="image/png" href="favicon.png?v=6">
 <link rel="apple-touch-icon" href="apple-touch-icon.png?v=6">
 <meta property="og:type" content="website">
@@ -76,6 +78,20 @@ header nav a:hover{color:var(--accent)}
 .browser .lines .b{width:140px;height:38px;margin-top:6px;background:var(--accent)}
 
 .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.qa{display:flex;flex-direction:column;align-items:center;gap:40px;padding:112px var(--gutter);background:var(--stone)}
+.qa h2{margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(40px,5vw,64px);line-height:1.05}
+.qa-list{width:min(820px,100%)}
+.qa details{border-bottom:1px solid var(--soft)}
+.qa summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;font-family:var(--serif);font-weight:600;font-size:clamp(21px,2.4vw,25px);line-height:1.25}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary:after{content:"+";font-family:var(--sans);font-weight:400;font-size:26px;color:var(--accent);flex-shrink:0;transition:transform .2s}
+.qa details[open] summary:after{transform:rotate(45deg)}
+.qa details p{margin:0 0 22px;font-size:17px;line-height:1.7;color:var(--muted)}
+.quick-contact{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px 16px;margin:0}
+.quick-contact span{font-size:16px;color:var(--muted)}
+.quick-contact a{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border:1px solid var(--ink);color:var(--ink);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase}
+.quick-contact a:hover{background:var(--ink);color:var(--paper)}
+@media (max-width:820px){.qa{padding-block:80px}}
 .samples{display:flex;flex-direction:column;gap:44px;padding:112px var(--gutter);background:var(--paper)}
 .samples-head{display:flex;flex-direction:column;gap:14px;max-width:720px}
 .samples h2{margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(40px,5vw,64px);line-height:1.05}
@@ -364,10 +380,10 @@ header nav{gap:24px;flex-wrap:nowrap;white-space:nowrap}
 <header>
   <nav aria-label="Main">
     <a href="#how">How it works</a>
-    <a href="#about">About</a>
-    <a href="#story">My story</a>
+    <a href="#samples">Samples</a>
     <a href="#price">Pricing</a>
     <a href="#plans">Monthly plans</a>
+    <a href="#about">About</a>
     <a href="faq.html">FAQ</a>
   </nav>
   <div class="brand">
@@ -422,36 +438,9 @@ header nav{gap:24px;flex-wrap:nowrap;white-space:nowrap}
   <div class="grid4">
     <div class="step"><span class="num">01</span><h3>Tell me about your business</h3><p>A quick call about what you do, who your customers are, and what you want the site to do.</p></div>
     <div class="step"><span class="num">02</span><h3>I build it first</h3><p>I design your site from scratch and show it to you, usually in about 1 week. No money up front, and you can ask for changes.</p></div>
-    <div class="step"><span class="num">03</span><h3>Love it? Then you pay</h3><p>If you love it, you pay and I launch it. If it's not for you, you don't owe me a thing.</p></div>
+    <div class="step"><span class="num">03</span><h3>Love it? Then you pay</h3><p>If you love it, you pay and I launch it. If not, you walk away and owe nothing. The draft stays mine and won't be launched or handed over. No risk, no hard feelings.</p></div>
     <div class="step"><span class="num">04</span><h3>After launch</h3><p>Your site is 100% yours. Hosting stays free, I help you connect your own domain (<a href="domain.html" style="color:var(--tan)">see how</a>), and I'm always just a text away.</p></div>
   </div>
-</section>
-
-<section class="about" id="about">
-  <div class="about-copy">
-    <span class="eyebrow">About me</span>
-    <h2>One person who <em>cares</em> about your business.</h2>
-    <p>Loftwell Digital is my web studio. I'm based in Wisconsin, and I build websites for local businesses here and across the US. I know you're busy running your business, so I make getting a website easy, honest, and stress-free.</p>
-    <p>I keep things personal. You'll work with me from your first call to the day your site goes live, and I'm always just a text away after that.</p>
-    <p>I only take a few projects at a time, so you get my full attention. Most sites are ready to show you in about 1 week.</p>
-  </div>
-  <div>
-    <span class="eyebrow">Why Loftwell</span>
-    <ul class="why" style="margin-top:22px"><li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg><div><h3>You don't pay until you love it</h3><p>I build your whole site first. If it's not right for you, you walk away and owe nothing.</p></div></li><li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg><div><h3>You talk to a real person</h3><p>Call or text me anytime. No ticket systems, no runaround, just a quick answer from the person building your site.</p></div></li><li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg><div><h3>Built for phones</h3><p>Most of your customers will find you on their phone, so every site is made to look great and make calling you easy.</p></div></li><li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg><div><h3>Simple, fair prices</h3><p>One clear price for your website, with no surprise fees and no long contracts.</p></div></li></ul>
-  </div>
-</section>
-
-<section class="story" id="story">
-  <span class="eyebrow">My story</span>
-  <h2>I used to think I wasn't capable. <em>I was wrong.</em></h2>
-  <span class="rule" aria-hidden="true"></span>
-  <div class="story-body">
-    <p>Growing up, school never really clicked for me. For a long time I believed I wasn't capable of much.</p>
-    <p>Over time I learned that's not the truth. Everyone has gifts. You just have to find them. One of mine turned out to be website design: solving problems, building things and making them look great. I taught myself, and I designed this site myself.</p>
-    <p>Loftwell Digital is built on that belief. Every business owner who calls me has something special about what they do, and my job is to help the world see it.</p>
-    <p>I just started Loftwell Digital, and I'm working hard to grow it. That's why you won't see a big portfolio here yet (just a few <a href="#samples" style="color:var(--tan)">sample designs</a>), and it's exactly why I build your site first and you only pay if you love it. I want to earn your trust and make your website one I'm proud to show off.</p>
-  </div>
-  <blockquote>“You can do anything. You just have to find what you love.”</blockquote>
 </section>
 
 <section class="samples" id="samples">
@@ -467,6 +456,12 @@ header nav{gap:24px;flex-wrap:nowrap;white-space:nowrap}
   </div>
 </section>
 
+
+
+
+
+
+
 <section class="price" id="price">
   <div class="center">
     <span class="eyebrow">Pricing</span>
@@ -478,12 +473,12 @@ header nav{gap:24px;flex-wrap:nowrap;white-space:nowrap}
     <div class="card-top"><span class="card-name">Website Refresh</span><span class="tag">HAVE A SITE?</span></div>
     <div class="amount"><b>$400</b><span>only if you love it</span></div>
     <ul class="checks">
-      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>Modern new design, up to 5 pages (like Home, About, Services, Gallery, Contact), up to 6 sections each</li>
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>Modern new design, up to 5 pages (like Home, About, Services, Gallery, Contact), up to 6 sections each. Extra pages $50 each</li>
       <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>Keeps your text and photos, and I'll help polish the wording</li>
       <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>Looks great on phones and computers</li>
       <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>Tap-to-call button</li>
       <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>Faster loading</li>
-      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>Free hosting for your site. No monthly fee needed to stay online</li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>2 rounds of changes, then you approve or walk away</li>
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>Free hosting, forever. No monthly fee to stay online</li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>2 rounds of changes, then you approve or walk away</li>
       <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>I launch it and show you how it works</li>
     </ul>
     <a class="btn btn-line" href="#contact">Get started</a>
@@ -492,17 +487,18 @@ header nav{gap:24px;flex-wrap:nowrap;white-space:nowrap}
     <div class="card-top"><span class="card-name">Full Website</span><span class="tag">NEW BUILD</span></div>
     <div class="amount"><b>$700</b><span>only if you love it</span></div>
     <ul class="checks">
-      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>Custom design, built from scratch</li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>Up to 5 pages (like Home, About, Services, Gallery, Contact), up to 6 sections each</li>
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>Custom design, built from scratch</li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>Up to 5 pages (like Home, About, Services, Gallery, Contact), up to 6 sections each. Extra pages $50 each</li>
       <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>Looks great on phones and computers</li>
       <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>Click-to-call and contact form</li>
       <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>Google-ready basics: page titles, descriptions and fast mobile loading</li>
       <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>Your logo, photos and colors</li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>Help writing your page text, free</li>
-      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>Free hosting for your site. No monthly fee needed to stay online</li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>2 rounds of changes, then you approve or walk away</li>
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>Free hosting, forever. No monthly fee to stay online</li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>2 rounds of changes, then you approve or walk away</li>
       <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>I launch it and show you how it works</li>
     </ul>
     <a class="btn btn-solid" href="#contact">Get started</a>
   </div>
   </div>
+  <p class="fine" style="max-width:720px"><b style="color:var(--ink)">More than 5 pages?</b> Extra pages are $50 each. A 10-page refresh, for example, is $400 + $250 = $650, and you'll know the total before I start.</p>
   <p class="fine" style="max-width:720px"><b style="color:var(--ink)">Not included in the flat price:</b> online stores, customer logins, booking systems and other advanced features. I'm happy to quote them separately, up front.</p>
   <p class="fine" style="max-width:720px">Questions about hosting, domains, ownership or what's included? <a href="faq.html">Read the FAQ &rarr;</a> &middot; <a href="domain.html">How domains work &rarr;</a></p>
   <div class="founding" id="founding">
@@ -520,7 +516,7 @@ header nav{gap:24px;flex-wrap:nowrap;white-space:nowrap}
   <div class="center">
     <span class="eyebrow">Monthly care plans</span>
     <h2>I keep your site <em>running for you.</em></h2>
-    <p class="lede">Optional. Your website stays online for free either way. A care plan just means I handle updates, backups and changes every month, so you never have to touch it. Cancel anytime.</p>
+    <p class="lede">Hosting your site is free, forever, with or without a plan. Care plans are completely optional. You only need one if you want me to handle text updates, photo swaps and backups for you after launch. Cancel anytime.</p>
   </div>
   <div class="grid3">
     <div class="card">
@@ -566,11 +562,55 @@ header nav{gap:24px;flex-wrap:nowrap;white-space:nowrap}
   <p class="fine">Cancel anytime. An edit is a small change like new text, hours, prices or a photo swap. <a href="faq.html" style="color:var(--accent)">More in the FAQ &rarr;</a></p>
 </section>
 
+<section class="about" id="about">
+  <div class="about-copy">
+    <span class="eyebrow">About me</span>
+    <h2>One person who <em>cares</em> about your business.</h2>
+    <p>Loftwell Digital is my web studio. I'm based in Wisconsin, and I build websites for local businesses here and across the US. I know you're busy running your business, so I make getting a website easy, honest, and stress-free.</p>
+    <p>I keep things personal. You'll work with me from your first call to the day your site goes live, and I'm always just a text away after that.</p>
+    <p>I only take a few projects at a time, so you get my full attention. Most sites are ready to show you in about 1 week.</p>
+  </div>
+  <div>
+    <span class="eyebrow">Why Loftwell</span>
+    <ul class="why" style="margin-top:22px"><li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg><div><h3>You don't pay until you love it</h3><p>I build your whole site first. If it's not right for you, you walk away and owe nothing.</p></div></li><li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg><div><h3>You talk to a real person</h3><p>Call or text me anytime. No ticket systems, no runaround, just a quick answer from the person building your site.</p></div></li><li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg><div><h3>Built for phones</h3><p>Most of your customers will find you on their phone, so every site is made to look great and make calling you easy.</p></div></li><li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg><div><h3>Simple, fair prices</h3><p>One clear price for your website, with no surprise fees and no long contracts.</p></div></li></ul>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <span class="eyebrow">My story</span>
+  <h2>I used to think I wasn't capable. <em>I was wrong.</em></h2>
+  <span class="rule" aria-hidden="true"></span>
+  <div class="story-body">
+    <p>Growing up, school never really clicked for me. For a long time I believed I wasn't capable of much.</p>
+    <p>Over time I learned that's not the truth. Everyone has gifts. You just have to find them. One of mine turned out to be website design: solving problems, building things and making them look great. I taught myself, and I designed this site myself.</p>
+    <p>Loftwell Digital is built on that belief. Every business owner who calls me has something special about what they do, and my job is to help the world see it.</p>
+    <p>I just started Loftwell Digital, and I'm working hard to grow it. That's why you won't see a big portfolio here yet (just a few <a href="#samples" style="color:var(--tan)">sample designs</a>), and it's exactly why I build your site first and you only pay if you love it. I want to earn your trust and make your website one I'm proud to show off.</p>
+  </div>
+  <blockquote>“You can do anything. You just have to find what you love.”</blockquote>
+</section>
+
+<section class="qa" id="questions">
+  <div class="center">
+    <span class="eyebrow">Good questions</span>
+    <h2>What's the catch?</h2>
+    <p class="lede" style="max-width:600px">There isn't one, but here are straight answers to what most business owners ask first.</p>
+  </div>
+  <div class="qa-list">
+    <details><summary>What happens if I walk away?</summary><p>You owe nothing, and that's it. The draft stays the property of Loftwell Digital and won't be launched, handed over or given to anyone else. No risk to you, and no hard feelings.</p></details>
+    <details><summary>Is hosting free, or do I have to pay $39 a month?</summary><p>Hosting is free, forever. Your site stays online whether or not you ever buy a care plan. The monthly plans are optional and only cover me doing work for you after launch, like text updates, photo swaps and backups.</p></details>
+    <details><summary>Will I be #1 on Google?</summary><p>No one can honestly promise that. "Google-ready" means I set up the basics Google needs to find and understand your site: page titles, descriptions, fast phone loading and your Google Business Profile. Ranking higher takes time and depends on things like reviews and competition.</p></details>
+    <details><summary>My site has more than 5 pages. What does that cost?</summary><p>Extra pages are $50 each. A 10-page refresh, for example, is $400 + $250 = $650. I'll confirm the total with you before I start, so there are no surprises.</p></details>
+    <details><summary>Do I own the site after I pay?</summary><p>Yes, 100%. It's yours once it's paid, built with standard code any web designer can edit, and your domain is always in your name.</p></details>
+  </div>
+  <p class="fine">More answers about domains, changes and care plans are in the <a href="faq.html">full FAQ</a>.</p>
+</section>
+
 <section class="closing" id="contact">
   <span class="eyebrow">I'd love to hear from you</span>
   <h2>LET'S TALK</h2>
   <p class="note">Hi there, I'm so happy you stopped by! Whether you need a brand-new website, want your old one rebuilt from the ground up, or just need a fresh update, I'd love to help. Tell me a little about your business below, and I'll reach out personally to say hello. No pressure, no cost to chat, and you don't pay a thing until you see your site and love it. I can't wait to meet you!</p>
   <ul class="trust tc"><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>No money up front</li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>Pay only if you love it</li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>2 rounds of changes included</li></ul>
+  <p class="quick-contact"><span>In a hurry? Skip the form:</span><a href="tel:7153142432">Call 715-314-2432</a><a href="sms:7153142432">Text me</a></p>
   <div class="rule"></div>
   <form class="lead-form" id="lead-form" name="contact" method="POST" action="https://formsubmit.co/b5c1bb01cc71d0e2c66a6c6755952e5e">
     <input type="hidden" name="_subject" value="New Loftwell Digital website inquiry">
