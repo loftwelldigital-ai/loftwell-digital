@@ -16,7 +16,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://loftwelldigital-ai.github.io/loftwell-digital/preview.png?v=2">
-<meta name="description" content="Loftwell Digital builds new websites and refreshes old ones for local businesses. I build it first, and you only pay if you love it. Flat prices, plus monthly care plans.">
+<meta name="description" content="Loftwell Digital builds new websites and refreshes old ones for local businesses in Wisconsin and across the US. I build it first, and you only pay if you love it. Flat prices, plus monthly care plans.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
@@ -76,6 +76,22 @@ header nav a:hover{color:var(--accent)}
 .browser .lines .b{width:140px;height:38px;margin-top:6px;background:var(--accent)}
 
 .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.samples{display:flex;flex-direction:column;gap:44px;padding:112px var(--gutter);background:var(--paper)}
+.samples-head{display:flex;flex-direction:column;gap:14px;max-width:720px}
+.samples h2{margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(40px,5vw,64px);line-height:1.05}
+.samples-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.sample{display:flex;flex-direction:column;gap:14px;color:var(--ink);text-decoration:none}
+.sample img{display:block;width:100%;height:auto;aspect-ratio:8/5;object-fit:cover;object-position:top;border:1px solid var(--line);box-shadow:0 18px 40px rgba(26,20,16,.10);transition:transform .25s ease}
+.sample:hover img{transform:translateY(-4px)}
+.sample b{font-family:var(--serif);font-weight:600;font-size:26px;line-height:1.15}
+.sample span{font-size:16px;line-height:1.55;color:var(--muted)}
+.sample em{font-style:normal;font-size:14px;font-weight:600;color:var(--accent)}
+@media (max-width:1000px){.samples-grid{grid-template-columns:1fr;max-width:560px}}
+@media (max-width:820px){.samples{padding-block:80px}}
+@media (prefers-reduced-motion:reduce){.sample img{transition:none}}
+.grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:44px}
+@media (max-width:1100px){.grid4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.grid4{grid-template-columns:1fr;gap:36px}}
 .features{padding:0 var(--gutter) 120px}
 .feature{display:flex;flex-direction:column;gap:14px;padding:40px;background:var(--white);border:1px solid var(--line)}
 .feature h3{margin:0;font-family:var(--serif);font-weight:600;font-size:30px}
@@ -371,7 +387,7 @@ header nav{gap:24px;flex-wrap:nowrap;white-space:nowrap}
   <div class="hero-copy">
     <span class="eyebrow">Websites for local businesses</span>
     <h1>A website that makes your <em>phone ring.</em></h1>
-    <p class="lede">I build your website first and show it to you. If you love it, then you pay.</p>
+    <p class="lede">I build your website first and show it to you. If you love it, then you pay. If not, you owe nothing. It's 100% risk-free.</p>
     <div class="actions">
       <a class="btn btn-solid" href="#contact">Start my website</a>
       <a class="btn btn-line" href="#how">How it works</a>
@@ -401,12 +417,13 @@ header nav{gap:24px;flex-wrap:nowrap;white-space:nowrap}
 <section class="how" id="how">
   <div class="center">
     <span class="eyebrow">Your next step</span>
-    <h2>Three simple steps</h2>
+    <h2>How it works</h2>
   </div>
-  <div class="grid3" style="gap:56px">
+  <div class="grid4">
     <div class="step"><span class="num">01</span><h3>Tell me about your business</h3><p>A quick call about what you do, who your customers are, and what you want the site to do.</p></div>
     <div class="step"><span class="num">02</span><h3>I build it first</h3><p>I design your site from scratch and show it to you, usually in about 1 week. No money up front, and you can ask for changes.</p></div>
     <div class="step"><span class="num">03</span><h3>Love it? Then you pay</h3><p>If you love it, you pay and I launch it. If it's not for you, you don't owe me a thing.</p></div>
+    <div class="step"><span class="num">04</span><h3>After launch</h3><p>Your site is 100% yours. Hosting stays free, I help you connect your own domain (<a href="domain.html" style="color:var(--tan)">see how</a>), and I'm always just a text away.</p></div>
   </div>
 </section>
 
@@ -414,7 +431,7 @@ header nav{gap:24px;flex-wrap:nowrap;white-space:nowrap}
   <div class="about-copy">
     <span class="eyebrow">About me</span>
     <h2>One person who <em>cares</em> about your business.</h2>
-    <p>Loftwell Digital is my web studio. I build websites for local businesses. I know you're busy running your business, so I make getting a website easy, honest, and stress-free.</p>
+    <p>Loftwell Digital is my web studio. I'm based in Wisconsin, and I build websites for local businesses here and across the US. I know you're busy running your business, so I make getting a website easy, honest, and stress-free.</p>
     <p>I keep things personal. You'll work with me from your first call to the day your site goes live, and I'm always just a text away after that.</p>
     <p>I only take a few projects at a time, so you get my full attention. Most sites are ready to show you in about 1 week.</p>
   </div>
@@ -429,12 +446,25 @@ header nav{gap:24px;flex-wrap:nowrap;white-space:nowrap}
   <h2>I used to think I wasn't capable. <em>I was wrong.</em></h2>
   <span class="rule" aria-hidden="true"></span>
   <div class="story-body">
-    <p>Growing up, I struggled in school. For a long time I believed I wasn't capable of much, and honestly, I thought I was dumb.</p>
-    <p>Over time I learned that's not the truth. Everyone has gifts. You just have to find them. One of mine turned out to be website design. I taught myself, and I designed this site myself.</p>
+    <p>Growing up, school never really clicked for me. For a long time I believed I wasn't capable of much.</p>
+    <p>Over time I learned that's not the truth. Everyone has gifts. You just have to find them. One of mine turned out to be website design: solving problems, building things and making them look great. I taught myself, and I designed this site myself.</p>
     <p>Loftwell Digital is built on that belief. Every business owner who calls me has something special about what they do, and my job is to help the world see it.</p>
-    <p>I just started Loftwell Digital, and I'm working hard to grow it. That's why you won't see a big portfolio here yet, and it's exactly why I build your site first and you only pay if you love it. I want to earn your trust and make your website one I'm proud to show off.</p>
+    <p>I just started Loftwell Digital, and I'm working hard to grow it. That's why you won't see a big portfolio here yet (just a few <a href="#samples" style="color:var(--tan)">sample designs</a>), and it's exactly why I build your site first and you only pay if you love it. I want to earn your trust and make your website one I'm proud to show off.</p>
   </div>
   <blockquote>“You can do anything. You just have to find what you love.”</blockquote>
+</section>
+
+<section class="samples" id="samples">
+  <div class="samples-head">
+    <span class="eyebrow">Sample designs</span>
+    <h2>See what I can build for you</h2>
+    <p class="lede">I'm just getting started, so these are concept sites for made-up local businesses, not real clients. Each one is designed from scratch to show a different style. Tap one to explore it.</p>
+  </div>
+  <div class="samples-grid">
+    <a class="sample" href="concepts/bakery.html"><img src="concepts/thumbs/bakery.jpg" width="960" height="600" loading="lazy" alt="Concept website for Rise and Rye, a made-up bakery, with a big warm headline and today's bake list"><b>Rise &amp; Rye Bakehouse</b><span>A warm, friendly bakery site built around today's bake and ordering ahead.</span><em>Concept design &middot; view the site</em></a>
+    <a class="sample" href="concepts/plumber.html"><img src="concepts/thumbs/plumber.jpg" width="960" height="600" loading="lazy" alt="Concept website for Northbound Plumbing, a made-up plumber, with a bold headline and a big tap-to-call phone number"><b>Northbound Plumbing &amp; Drain</b><span>A bold, call-first site for a trade business, with a tap-to-call bar on phones.</span><em>Concept design &middot; view the site</em></a>
+    <a class="sample" href="concepts/gym.html"><img src="concepts/thumbs/gym.jpg" width="960" height="600" loading="lazy" alt="Concept website for Ironpine Strength Club, a made-up gym, with a huge headline and a weekly class schedule"><b>Ironpine Strength Club</b><span>A strong, energetic gym site with a weekly class schedule and simple pricing.</span><em>Concept design &middot; view the site</em></a>
+  </div>
 </section>
 
 <section class="price" id="price">
@@ -473,13 +503,14 @@ header nav{gap:24px;flex-wrap:nowrap;white-space:nowrap}
     <a class="btn btn-solid" href="#contact">Get started</a>
   </div>
   </div>
+  <p class="fine" style="max-width:720px"><b style="color:var(--ink)">Not included in the flat price:</b> online stores, customer logins, booking systems and other advanced features. I'm happy to quote them separately, up front.</p>
   <p class="fine" style="max-width:720px">Questions about hosting, domains, ownership or what's included? <a href="faq.html">Read the FAQ &rarr;</a> &middot; <a href="domain.html">How domains work &rarr;</a></p>
   <div class="founding" id="founding">
     <div class="founding-copy">
       <span class="eyebrow">Founding client offer</span>
       <h3>Be one of my first 5 clients and get <em>$100 off.</em></h3>
       <p>Your Full Website is $600 instead of $700, or your Website Refresh is $300 instead of $400. In return, I just ask for an honest review once your site is live, and permission to show your site as an example of my work.</p>
-      <span class="spots">5 of 5 spots left</span>
+      <span class="spots">Only 5 spots &middot; first come, first served</span>
     </div>
     <a class="btn" href="#contact">Claim my spot</a>
   </div>
@@ -591,7 +622,7 @@ header nav{gap:24px;flex-wrap:nowrap;white-space:nowrap}
 <footer>
   <b>LOFTWELL DIGITAL</b>
   <div class="social"><a href="https://share.google/H3iZdyQCRFuP903Om" target="_blank" rel="noopener" aria-label="Loftwell Digital on Google"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.6 12.2c0-.7-.1-1.4-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3Z"/><path fill="currentColor" d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22Z" opacity=".85"/><path fill="currentColor" d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1a10 10 0 0 0 0 9.2L6.4 14Z" opacity=".7"/><path fill="currentColor" d="M12 6c1.5 0 2.8.5 3.8 1.5l2.9-2.9A10 10 0 0 0 3.1 7.4L6.4 10C7.2 7.7 9.4 6 12 6Z" opacity=".55"/></svg></a><a href="https://www.instagram.com/loftwelldigital/" target="_blank" rel="noopener" aria-label="Loftwell Digital on Instagram"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg></a><a href="https://www.tiktok.com/@loftwelldigital" target="_blank" rel="noopener" aria-label="Loftwell Digital on TikTok"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.6 2.2 4.4 5 4.7"/></svg></a></div>
-  <span>© <span class="yr">2026</span> Loftwell Digital · Websites for local businesses · <a class="foot-link" href="faq.html">FAQ</a> · <a class="foot-link" href="domain.html">Domain guide</a> · <a class="foot-link" href="terms.html">Terms</a> · <a class="foot-link" href="privacy.html">Privacy</a></span>
+  <span>© <span class="yr">2026</span> Loftwell Digital · Websites for local businesses · Based in Wisconsin, serving the US · <a class="foot-link" href="faq.html">FAQ</a> · <a class="foot-link" href="domain.html">Domain guide</a> · <a class="foot-link" href="terms.html">Terms</a> · <a class="foot-link" href="privacy.html">Privacy</a></span>
 </footer>
 
 <script>

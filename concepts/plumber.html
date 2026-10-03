@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Northbound Plumbing &amp; Drain | Concept by Loftwell Digital</title>
+<meta name="description" content="A concept website for a fictional plumbing company, designed by Loftwell Digital as a sample of my work.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="../favicon.png?v=6">
+<style>
+@font-face{font-family:'Archivo';src:url(fonts/archivo.woff) format('woff');font-weight:100 900;font-stretch:62% 125%;font-display:swap}
+:root{
+  --navy:#0D2B4C; --navy-2:#163C66; --signal:#FFC72C; --alarm:#D7263D;
+  --steel:#E4E9EF; --white:#FFFFFF; --ink:#0A1B2E; --muted:#4A5B70;
+  --f:'Archivo',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--f);font-size:18px;line-height:1.55}
+a{color:inherit}
+a:focus-visible{outline:3px solid var(--signal);outline-offset:3px}
+.concept{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 16px;padding:10px 16px;background:#000;color:#DDE4EC;font-size:14px;text-align:center}
+.concept a{color:var(--signal);font-weight:700}
+.wrap{width:min(1160px,100% - 40px);margin-inline:auto}
+
+.top{background:var(--navy);color:var(--white)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:800;font-stretch:75%;font-size:24px;letter-spacing:.01em;line-height:1}
+.logo small{display:block;font-weight:500;font-size:13px;font-stretch:100%;color:#AFC3DA;letter-spacing:.04em}
+.live{display:flex;align-items:center;gap:8px;font-size:15px;color:#CFE0F2}
+.live i{width:10px;height:10px;border-radius:50%;background:#3DDC84;box-shadow:0 0 0 4px rgba(61,220,132,.2)}
+
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding:48px 0 56px}
+.hero h1{margin:0;font-weight:900;font-stretch:68%;font-size:clamp(50px,7.4vw,104px);line-height:.9;text-transform:uppercase;letter-spacing:-.01em}
+.hero p{max-width:34ch;font-size:20px;color:#CFE0F2;margin:22px 0 0}
+.callbox{background:var(--signal);color:var(--navy);padding:30px 30px 26px;border-radius:6px;transform:translateY(48px);box-shadow:0 24px 48px rgba(0,0,0,.25)}
+.callbox .k{font-weight:700;font-size:16px}
+.callbox a{display:block;margin:6px 0 10px;font-weight:900;font-stretch:70%;font-size:clamp(36px,4.4vw,58px);line-height:1;white-space:nowrap;text-decoration:none;font-variant-numeric:tabular-nums}
+.callbox p{margin:0;font-size:16px;color:var(--navy)}
+.badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.badges span{font-size:14px;font-weight:700;padding:6px 10px;border:2px solid var(--navy);border-radius:4px}
+
+.services{padding:72px 0 72px}
+.services h2,.area h2,.price h2{margin:0 0 30px;font-weight:900;font-stretch:72%;font-size:clamp(36px,4.6vw,56px);line-height:1;text-transform:uppercase}
+.svc{display:grid;grid-template-columns:repeat(3,1fr);border-top:3px solid var(--navy)}
+.svc div{padding:26px 26px 30px 0;border-bottom:1px solid var(--steel)}
+.svc div:not(:nth-child(3n+1)){padding-left:26px;border-left:1px solid var(--steel)}
+.svc h3{margin:0 0 8px;font-size:22px;font-weight:800}
+.svc p{margin:0;color:var(--muted);font-size:17px}
+.svc .urgent h3{color:var(--alarm)}
+
+.price{background:var(--steel);padding:72px 0}
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.price ol{margin:0;padding:0;list-style:none;counter-reset:s}
+.price li{counter-increment:s;display:grid;grid-template-columns:52px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid #C9D3DE}
+.price li:before{content:counter(s);display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--navy);color:var(--signal);font-weight:900}
+.price li b{display:block;font-size:20px}
+.price li span{color:var(--muted);font-size:17px}
+.lead{font-size:20px;color:var(--muted);max-width:40ch}
+
+.area{padding:72px 0}
+.towns{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none}
+.towns li{padding:10px 16px;border:2px solid var(--navy);border-radius:999px;font-weight:700}
+.cta{background:var(--navy);color:var(--white);padding:56px 0}
+.cta .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px}
+.cta h2{margin:0;font-weight:900;font-stretch:70%;font-size:clamp(34px,4.4vw,52px);text-transform:uppercase;line-height:1}
+.btn{display:inline-block;padding:18px 28px;background:var(--signal);color:var(--navy);font-weight:900;font-size:20px;text-decoration:none;border-radius:4px}
+.btn:hover{background:var(--white)}
+footer{padding:24px 0;font-size:15px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+.sticky{display:none}
+
+@media (max-width:900px){
+  .hero,.price-grid{grid-template-columns:1fr}
+  .callbox{transform:none;margin-bottom:40px}
+  .svc{grid-template-columns:1fr}
+  .svc div,.svc div:not(:nth-child(3n+1)){padding:22px 0;border-left:0}
+  .services{padding-top:56px}
+  .live{display:none}
+  .sticky{display:block;position:fixed;left:12px;right:12px;bottom:12px;z-index:5;text-align:center;padding:16px;background:var(--alarm);color:#fff;font-weight:900;font-size:19px;border-radius:6px;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+  body{padding-bottom:80px}
+}
+</style>
+</head>
+<body>
+<div class="concept" role="note"><span>Concept design by Loftwell Digital. Northbound is a sample business I made up, not a real client.</span><a href="../#samples">Back to Loftwell Digital</a></div>
+
+<div class="top">
+  <div class="wrap">
+    <div class="bar">
+      <a class="logo" href="#"><svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3c7 9 13 15 13 22a13 13 0 0 1-26 0c0-7 6-13 13-22z" fill="#FFC72C"/><path d="M14 27a6 6 0 0 0 6 6" stroke="#0D2B4C" stroke-width="3" fill="none" stroke-linecap="round"/></svg><span>NORTHBOUND<small>Plumbing &amp; Drain</small></span></a>
+      <span class="live"><i></i>A plumber is on call right now</span>
+    </div>
+    <header class="hero">
+      <div>
+        <h1>Burst pipe? We'll be there in 60 minutes.</h1>
+        <p>Licensed plumbers for homes and small businesses around Pine Hollow. Up-front prices, clean work, no surprise bills.</p>
+      </div>
+      <div class="callbox">
+        <span class="k">Call or text, 24 hours a day</span>
+        <a href="tel:5550100187">(555) 010-0187</a>
+        <p>A real plumber answers. Not a call center.</p>
+        <div class="badges"><span>Licensed &amp; insured</span><span>Same-day service</span><span>Free estimates</span></div>
+      </div>
+    </header>
+  </div>
+</div>
+
+<section class="services wrap">
+  <h2>What we fix</h2>
+  <div class="svc">
+    <div class="urgent"><h3>Emergency leaks</h3><p>Burst pipes, flooding and no water. Day or night.</p></div>
+    <div><h3>Drain cleaning</h3><p>Slow sinks, clogged toilets and main line backups.</p></div>
+    <div><h3>Water heaters</h3><p>Repairs and same-day replacement, tank or tankless.</p></div>
+    <div><h3>Sump pumps</h3><p>Install, test and replace before the spring melt.</p></div>
+    <div><h3>Fixtures</h3><p>Faucets, toilets, showers and garbage disposals.</p></div>
+    <div><h3>Frozen pipes</h3><p>Safe thawing and repair, plus tips to stop it next winter.</p></div>
+  </div>
+</section>
+
+<section class="price">
+  <div class="wrap price-grid">
+    <div>
+      <h2>No surprise bills</h2>
+      <p class="lead">You'll know the price before we pick up a wrench. If it costs more than we quoted, you don't pay the difference.</p>
+    </div>
+    <ol>
+      <li><div><b>Call or text us</b><span>Tell us what's going on. Photos help.</span></div></li>
+      <li><div><b>Get a flat price</b><span>We quote on the spot, before any work starts.</span></div></li>
+      <li><div><b>We fix it and clean up</b><span>Shoe covers on, mess gone when we leave.</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="area wrap">
+  <h2>Where we work</h2>
+  <ul class="towns"><li>Pine Hollow</li><li>Elm Bend</li><li>North Ridge</li><li>Mill Creek</li><li>Lake Arden</li><li>And 20 miles around</li></ul>
+</section>
+
+<section class="cta">
+  <div class="wrap"><h2>Water where it shouldn't be?</h2><a class="btn" href="tel:5550100187">Call (555) 010-0187</a></div>
+</section>
+
+<footer><div class="wrap"><span>Northbound Plumbing &amp; Drain (sample business)</span><span>Website concept by <a href="../">Loftwell Digital</a></span></div></footer>
+<a class="sticky" href="tel:5550100187">Tap to call a plumber now</a>
+</body>
+</html>
