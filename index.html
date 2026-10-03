@@ -78,6 +78,17 @@ header nav a:hover{color:var(--accent)}
 .browser .lines .b{width:140px;height:38px;margin-top:6px;background:var(--accent)}
 
 .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.noplan{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;width:min(880px,100%);margin:0 auto}
+.np-col{padding:30px 32px;background:var(--white);border:1px solid var(--line)}
+.np-col h3{margin:0 0 14px;font-family:var(--serif);font-weight:600;font-size:26px}
+.np-col ul{margin:0;padding-left:20px}
+.np-col li{margin:7px 0;font-size:16px;line-height:1.55;color:var(--muted)}
+.np-col b{color:var(--ink)}
+.np-plan{background:var(--ink);border-color:var(--ink)}
+.np-plan h3{color:var(--tan)}
+.np-plan li{color:var(--soft)}
+.np-math{grid-column:1/-1;margin:4px 0 0;text-align:center;font-size:16px;line-height:1.6;color:var(--ink);font-weight:500}
+@media (max-width:700px){.noplan{grid-template-columns:1fr}.np-col{padding:24px}}
 .qa{display:flex;flex-direction:column;align-items:center;gap:40px;padding:112px var(--gutter);background:var(--stone)}
 .qa h2{margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(40px,5vw,64px);line-height:1.05}
 .qa-list{width:min(820px,100%)}
@@ -532,6 +543,29 @@ header nav{gap:24px;flex-wrap:nowrap;white-space:nowrap}
     </div>
   </div>
   <p class="fine" style="max-width:760px"><b style="color:var(--ink)">What's a small edit?</b> A small edit is a quick update to what's already on your site that takes about 15 minutes or less, like changing your hours, swapping a photo, updating a price or fixing a typo. New sections, new pages and redesigns aren't edits. I'll quote those up front. Unused edits don't roll over. Cancel anytime. <a href="faq.html" style="color:var(--accent)">More in the FAQ &rarr;</a></p>
+  <div class="noplan">
+    <div class="np-col">
+      <h3>Without a plan</h3>
+      <ul>
+        <li>Your site stays online, free</li>
+        <li>Each small edit is <b>$35</b>, paid before I start</li>
+        <li>Bigger changes are quoted up front</li>
+        <li>No updates, backups or monitoring</li>
+        <li>Edits are done when I have an opening</li>
+      </ul>
+    </div>
+    <div class="np-col np-plan">
+      <h3>With a plan</h3>
+      <ul>
+        <li>Your site stays online, free</li>
+        <li>Edits included every month</li>
+        <li>Updates, weekly backups and monitoring</li>
+        <li>If something breaks, I'm already on it</li>
+        <li>Plan members always come first</li>
+      </ul>
+    </div>
+    <p class="np-math">1 edit a month is $35 on its own, or $39 on Basic with updates, backups and monitoring included. 3 edits a month is $105 without a plan, while Growth gives you 5 for $99.</p>
+  </div>
 </section>
 
 <section class="about" id="about">
@@ -570,6 +604,7 @@ header nav{gap:24px;flex-wrap:nowrap;white-space:nowrap}
   <div class="qa-list">
     <details><summary>What happens if I walk away?</summary><p>You owe nothing, and that's it. The draft stays the property of Loftwell Digital and won't be launched, handed over or given to anyone else. No risk to you, and no hard feelings.</p></details>
     <details><summary>Is hosting free, or do I have to pay $39 a month?</summary><p>Hosting is free, forever. Your site stays online whether or not you ever buy a care plan. The monthly plans are optional and only cover me doing work for you after launch, like text updates, photo swaps and backups.</p></details>
+    <details><summary>What if I don't get a care plan?</summary><p>Your site stays online for free, no problem. When you need a change, just text me. Small edits are $35 each, paid before I start, and bigger changes are quoted up front. You won't get updates, backups or monitoring, and plan members come first. If you'll want changes every month, a plan is the better deal.</p></details>
     <details><summary>Will I be #1 on Google?</summary><p>No one can honestly promise that. "Google-ready" means I set up the basics Google needs to find and understand your site: page titles, descriptions, fast phone loading and your Google Business Profile. Ranking higher takes time and depends on things like reviews and competition.</p></details>
     <details><summary>My site has more than 5 pages. What does that cost?</summary><p>Extra pages are $50 each. A 10-page refresh, for example, is $400 + $250 = $650. I'll confirm the total with you before I start, so there are no surprises.</p></details>
     <details><summary>Do I own the site after I pay?</summary><p>Yes, 100%. It's yours once it's paid, built with standard code any web designer can edit, and your domain is always in your name.</p></details>
