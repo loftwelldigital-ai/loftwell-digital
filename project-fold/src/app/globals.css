@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+/*
+ * PROJECT FOLD design tokens.
+ * Warm off-white canvas, charcoal ink, restrained muted accents.
+ */
+@theme {
+  --color-canvas: #f6f4ef;
+  --color-surface: #fdfcfa;
+  --color-sunken: #efece5;
+  --color-line: #e3dfd6;
+  --color-line-strong: #d2ccc0;
+
+  --color-ink: #24221f;
+  --color-ink-2: #55514b;
+  --color-ink-3: #8a847b;
+
+  --color-accent: #3e5a52;
+  --color-accent-soft: #e3eae6;
+
+  --color-alert: #8f5f1c;
+  --color-alert-soft: #f5ecdc;
+  --color-alert-line: #e6d3b0;
+
+  --color-critical: #9a3f2f;
+  --color-critical-soft: #f6e6e1;
+  --color-critical-line: #e8c7bd;
+
+  --color-ok: #4d6b4f;
+  --color-ok-soft: #e6ede4;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --shadow-card: 0 1px 2px rgb(36 34 31 / 0.04), 0 1px 1px rgb(36 34 31 / 0.02);
+  --shadow-raised: 0 8px 30px rgb(36 34 31 / 0.12);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "cv11", "ss01";
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+}
