@@ -263,8 +263,9 @@ footer b{font-family:var(--serif);font-weight:500;font-size:22px;letter-spacing:
 
 <footer>
   <b>LOFTWELL DIGITAL</b>
-  <span>© 2026 Loftwell Digital · Websites for local businesses · <a style="color:inherit" href="faq.html">FAQ</a> · <a style="color:inherit" href="terms.html">Terms</a> · <a style="color:inherit" href="privacy.html">Privacy</a></span>
+  <span>© <span class="yr">2026</span> Loftwell Digital · Websites for local businesses · <a style="color:inherit" href="faq.html">FAQ</a> · <a style="color:inherit" href="terms.html">Terms</a> · <a style="color:inherit" href="privacy.html">Privacy</a></span>
 </footer>
 
+<script>document.querySelectorAll(".yr").forEach(function(e){var y=new Date().getFullYear();if(y>2026)e.textContent="2026–"+y;});</script>
 </body>
 </html>
