@@ -597,9 +597,14 @@ header nav{gap:24px;flex-wrap:nowrap;white-space:nowrap}
 (function(){
   var form=document.getElementById('lead-form'); if(!form) return;
   var btn=document.getElementById('f-submit'), status=document.getElementById('f-status');
+  var loadedAt=Date.now();
   form.addEventListener('submit', function(e){
     if(!window.fetch) return;
     e.preventDefault();
+    // Spam guards: hidden trap field, too-fast submits and link-stuffed messages
+    var hp=form.querySelector('[name=_honey]'), msg=(form.querySelector('[name=message]')||{}).value||'';
+    if((hp&&hp.value)||Date.now()-loadedAt<4000){window.location.href='thank-you.html';return;}
+    if((msg.match(/https?:\/\//gi)||[]).length>2){status.textContent='Please remove extra links from your message and try again.';return;}
     btn.disabled=true; btn.textContent='Sending...'; status.textContent='';
     var data={}; new FormData(form).forEach(function(v,k){data[k]=v});
     fetch('https://formsubmit.co/ajax/loftwelldigital@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
