@@ -366,7 +366,7 @@ h1 em,h2 em,h3 em,.hero h1 em{color:#F29452!important;text-shadow:0 0 22px rgba(
   window.addEventListener('message',function(e){
     if(!e.data||e.data.lw!=='go')return;
     var h=e.data.hash||'';
-    if(h&&h.charAt(0)==='#'){var t=document.querySelector(h);if(t){history.replaceState(null,'',h);t.scrollIntoView();}}
+    if(h==='#top'){history.replaceState(null,'',location.pathname);window.scrollTo(0,0);}else if(h&&h.charAt(0)==='#'){var t=document.querySelector(h);if(t){history.replaceState(null,'',h);t.scrollIntoView();}}
     finish();
   });
 })();
