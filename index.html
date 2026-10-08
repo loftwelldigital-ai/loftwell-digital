@@ -343,11 +343,10 @@ main>section{position:relative}
 @media (prefers-reduced-motion:reduce){.hero-mark{animation:none}}
 </style>
 <style>
-/* bottom sign-off made of round beads that gather as you scroll to it (computers only) */
-.signoff{position:relative;overflow:hidden}
-#so-beads{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.signoff.beads-on>*:not(canvas){color:transparent!important}
-.signoff.beads-on .dig::before,.signoff.beads-on .dig::after{background:transparent!important}
+/* moving waves above the bottom sign-off */
+.so-waves{position:relative;width:calc(100% + 2*var(--gutter));margin:-90px calc(-1*var(--gutter)) 18px;height:150px}
+.so-waves canvas{position:absolute;inset:0;width:100%;height:100%;display:block;-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent);mask-image:linear-gradient(180deg,#000 55%,transparent)}
+@media (max-width:700px){.so-waves{height:100px;margin-bottom:8px}}
 </style>
 </head>
 <body>
@@ -619,6 +618,7 @@ main>section{position:relative}
 </section>
 
 <section class="signoff" aria-label="Loftwell Digital">
+  <div class="so-waves" aria-hidden="true"><canvas id="waves"></canvas></div>
   <span class="est">EST. 2026</span>
   <p class="script">Loftwell</p>
   <span class="dig">DIGITAL</span>
@@ -659,68 +659,44 @@ h.querySelectorAll('nav a,.head-cta a').forEach(function(a){a.addEventListener('
 </script>
 <script>document.querySelectorAll(".yr").forEach(function(e){var y=new Date().getFullYear();if(y>2026)e.textContent="2026–"+y;});</script>
 
+
 <script>
 (function(){
-  var fine=window.matchMedia&&window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var sec=document.querySelector('.signoff');
-  if(!sec||!fine||reduce||window.innerWidth<=700)return;
-  var cv=document.createElement('canvas');cv.id='so-beads';cv.setAttribute('aria-hidden','true');sec.appendChild(cv);
-  var ctx=cv.getContext('2d'),W,H,dpr,beads=[],gathered=false,visible=false,running=false,t=0,mouse={x:-9999,y:-9999,on:false};
-  function hex(c){var m=c.match(/\d+(\.\d+)?/g);return m?[+m[0],+m[1],+m[2]]:[42,30,20]}
-  function textRect(el){var n=[].find.call(el.childNodes,function(x){return x.nodeType===3&&x.textContent.trim()});if(!n)return null;var r=document.createRange();r.selectNodeContents(n);return {rect:r.getBoundingClientRect(),text:n.textContent.trim()}}
-  function draw(o,el,sr){
-    var cs=getComputedStyle(el),tr=textRect(el);if(!tr)return;
-    o.font=cs.fontStyle+' '+(el.classList.contains('script')?cs.fontWeight:'600')+' '+cs.fontSize+' '+cs.fontFamily;
-    try{o.letterSpacing=cs.letterSpacing}catch(e){}
-    o.textAlign='left';o.textBaseline='middle';o.fillStyle='#fff';
-    o.fillText(tr.text,tr.rect.left-sr.left,tr.rect.top-sr.top+tr.rect.height/2);
-    try{o.letterSpacing='0px'}catch(e){}
+  var cv=document.getElementById('waves');if(!cv)return;
+  var box=cv.parentNode,ctx=cv.getContext('2d');
+  var live=window.matchMedia('(hover: hover) and (pointer: fine)').matches&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches&&window.innerWidth>700;
+  var W,H,dpr,N=120,h=[],v=[],t=0,running=false,visible=false,lastX=null;
+  // three layers: tan, light brown, warm brown (same browns as the site)
+  var layers=[{c:'rgba(209,167,125,.35)',y:.42,amp:10,sp:.012,k:1.6,mix:.6},{c:'rgba(168,122,72,.30)',y:.56,amp:8,sp:.017,k:2.3,mix:.85},{c:'rgba(138,95,48,.38)',y:.70,amp:6,sp:.022,k:3.1,mix:1}];
+  for(var i=0;i<N;i++){h[i]=0;v[i]=0}
+  function size(){var r=box.getBoundingClientRect();dpr=Math.min(window.devicePixelRatio||1,2);W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
+  function step(){
+    // water surface: each point pulls its neighbours, so a push travels outward as a ripple
+    for(var k=0;k<2;k++){for(var i=0;i<N;i++){var l=h[i>0?i-1:i],r=h[i<N-1?i+1:i];v[i]+=((l+r)/2-h[i])*.5-h[i]*.012;v[i]*=.985}for(var j=0;j<N;j++)h[j]+=v[j]}
   }
-  function sample(fn,gap){
-    var off=document.createElement('canvas');off.width=W;off.height=H;var o=off.getContext('2d');fn(o);
-    var d=o.getImageData(0,0,W,H).data,pts=[];
-    for(var y=0;y<H;y+=gap)for(var x=0;x<W;x+=gap)if(d[(y*W+x)*4+3]>110)pts.push([x,y]);return pts;
-  }
-  function build(){
-    var sr=sec.getBoundingClientRect();dpr=Math.min(window.devicePixelRatio||1,2);W=Math.round(sr.width);H=Math.round(sr.height);
-    cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
-    var old=beads;beads=[];
-    var brown=[[138,95,48],[168,122,72],[209,167,125],[94,63,30]];
-    var parts=[['.script',2,true],['.est',1,false],['.dig',1,false],['.so-tag',1,false]];
-    parts.forEach(function(pp){
-      var el=sec.querySelector(pp[0]);if(!el)return;var base=hex(getComputedStyle(el).color);
-      var pts=sample(function(o){draw(o,el,sr);
-        if(pp[0]==='.dig'){var r=el.getBoundingClientRect(),w=parseFloat(getComputedStyle(el,'::before').width)||80,pl=parseFloat(getComputedStyle(el).paddingLeft)||0,y=r.top-sr.top+r.height/2;
-          o.fillStyle='#fff';o.fillRect(r.left-sr.left+pl,y-1,w,2);o.fillRect(r.right-sr.left-w,y-1,w,2)}},pp[1]);
-      if(pp[2]){for(var i=pts.length-1;i>0;i--){var j=(Math.random()*(i+1))|0,tmp=pts[i];pts[i]=pts[j];pts[j]=tmp}pts=pts.slice(0,3600)}
-      pts.forEach(function(p){
-        var c=pp[2]?(Math.random()<.7?base:brown[(Math.random()*4)|0]):base;
-        var q=old[beads.length];
-        beads.push({tx:p[0],ty:p[1],x:q?q.x:Math.random()*W,y:q?q.y:Math.random()*H,vx:0,vy:0,r:pp[2]?Math.random()*.7+1.05:.75,c:c,a:pp[2]?Math.random()*.3+.7:.9,d:Math.random()*40,ph:Math.random()*6.28});
-      });
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    layers.forEach(function(L){
+      ctx.beginPath();ctx.moveTo(0,H);
+      for(var x=0;x<=W;x+=6){var i=Math.min(N-1,Math.round(x/W*(N-1)));
+        var y=H*L.y+Math.sin(x/W*Math.PI*2*L.k+t*L.sp*60)*L.amp+Math.sin(x/W*Math.PI*1.3*L.k-t*L.sp*35)*L.amp*.5+h[i]*L.mix;
+        ctx.lineTo(x,y)}
+      ctx.lineTo(W,H);ctx.closePath();ctx.fillStyle=L.c;ctx.fill();
     });
-    sec.classList.add('beads-on');
   }
-  function frame(){
-    if(!visible){running=false;return}
-    t++;ctx.clearRect(0,0,W,H);var R=110,R2=R*R;
-    for(var i=0;i<beads.length;i++){var b=beads[i];
-      if(gathered&&t>b.d){b.vx+=(b.tx-b.x)*.045;b.vy+=(b.ty-b.y)*.045}
-      else{b.vx+=Math.sin(t*.02+b.ph)*.05;b.vy+=Math.cos(t*.017+b.ph)*.05}
-      if(mouse.on){var dx=b.x-mouse.x,dy=b.y-mouse.y,d2=dx*dx+dy*dy;if(d2<R2){var dd=Math.sqrt(d2)||1,f=(1-dd/R);b.vx+=(-dy/dd*2.2+dx/dd*1.2)*f*2;b.vy+=(dx/dd*2.2+dy/dd*1.2)*f*2}}
-      b.vx*=.84;b.vy*=.84;b.x+=b.vx;b.y+=b.vy;
-      ctx.fillStyle='rgba('+b.c[0]+','+b.c[1]+','+b.c[2]+','+b.a+')';ctx.beginPath();ctx.arc(b.x,b.y,b.r,0,6.283);ctx.fill();
-    }
-    requestAnimationFrame(frame);
-  }
-  function go(){if(!running){running=true;requestAnimationFrame(frame)}}
-  sec.addEventListener('mousemove',function(e){var r=sec.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top;mouse.on=true});
-  sec.addEventListener('mouseleave',function(){mouse.on=false});
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){visible=e.isIntersecting;if(e.intersectionRatio>.35&&!gathered){gathered=true;t=0}if(visible)go()})},{threshold:[0,.35,.6]});
-  var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(build,200)});
-  var ready=document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve();
-  ready.then(function(){build();io.observe(sec)});
+  function frame(){if(!visible){running=false;return}t+=1/60;step();draw();requestAnimationFrame(frame)}
+  size();draw();
+  if(!live){window.addEventListener('resize',function(){size();draw()});return}
+  box.parentNode.addEventListener('mousemove',function(e){
+    var r=box.getBoundingClientRect();if(e.clientY<r.top-40||e.clientY>r.bottom+40){lastX=null;return}
+    var x=e.clientX-r.left,i=Math.max(1,Math.min(N-2,Math.round(x/W*(N-1))));
+    var dx=lastX===null?0:x-lastX;lastX=x;
+    var f=Math.min(7,Math.abs(dx)*.35+1.2);
+    for(var o=-4;o<=4;o++){var j=i+o;if(j>=0&&j<N)v[j]+=f*Math.exp(-o*o/6)}
+  });
+  box.parentNode.addEventListener('mouseleave',function(){lastX=null});
+  new IntersectionObserver(function(es){visible=es[0].isIntersecting;if(visible&&!running){running=true;requestAnimationFrame(frame)}}).observe(box);
+  window.addEventListener('resize',function(){size();draw()});
 })();
 </script>
 </body>
