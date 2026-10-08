@@ -344,9 +344,9 @@ main>section{position:relative}
 </style>
 <style>
 /* moving waves above the bottom sign-off */
-.so-waves{position:relative;width:calc(100% + 2*var(--gutter));margin:-90px calc(-1*var(--gutter)) 18px;height:150px}
-.so-waves canvas{position:absolute;inset:0;width:100%;height:100%;display:block;-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent);mask-image:linear-gradient(180deg,#000 55%,transparent)}
-@media (max-width:700px){.so-waves{height:100px;margin-bottom:8px}}
+.so-waves{position:relative;width:calc(100% + 2*var(--gutter));margin:24px calc(-1*var(--gutter)) -70px;height:150px}
+.so-waves canvas{position:absolute;inset:0;width:100%;height:100%;display:block;-webkit-mask-image:linear-gradient(0deg,#000 60%,transparent);mask-image:linear-gradient(0deg,#000 60%,transparent)}
+@media (max-width:700px){.so-waves{height:100px;margin-top:16px}}
 </style>
 </head>
 <body>
@@ -618,11 +618,11 @@ main>section{position:relative}
 </section>
 
 <section class="signoff" aria-label="Loftwell Digital">
-  <div class="so-waves" aria-hidden="true"><canvas id="waves"></canvas></div>
   <span class="est">EST. 2026</span>
   <p class="script">Loftwell</p>
   <span class="dig">DIGITAL</span>
   <span class="so-tag">WEBSITES · CARE</span>
+  <div class="so-waves" aria-hidden="true"><canvas id="waves"></canvas></div>
 </section>
 
 <footer>
