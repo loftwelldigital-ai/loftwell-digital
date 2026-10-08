@@ -672,7 +672,7 @@ h.querySelectorAll('nav a,.head-cta a').forEach(function(a){a.addEventListener('
   function size(){var r=box.getBoundingClientRect();dpr=Math.min(window.devicePixelRatio||1,2);W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
   function step(){
     // water surface: each point pulls its neighbours, so a push travels outward as a ripple
-    for(var k=0;k<2;k++){for(var i=0;i<N;i++){var l=h[i>0?i-1:i],r=h[i<N-1?i+1:i];v[i]+=((l+r)/2-h[i])*.5-h[i]*.012;v[i]*=.985}for(var j=0;j<N;j++)h[j]+=v[j]}
+    for(var k=0;k<2;k++){for(var i=0;i<N;i++){var l=h[i>0?i-1:i],r=h[i<N-1?i+1:i];v[i]+=((l+r)/2-h[i])*.5-h[i]*.012;v[i]*=.975}for(var j=0;j<N;j++)h[j]+=v[j]}
   }
   function draw(){
     ctx.clearRect(0,0,W,H);
@@ -691,7 +691,7 @@ h.querySelectorAll('nav a,.head-cta a').forEach(function(a){a.addEventListener('
     var r=box.getBoundingClientRect();if(e.clientY<r.top-40||e.clientY>r.bottom+40){lastX=null;return}
     var x=e.clientX-r.left,i=Math.max(1,Math.min(N-2,Math.round(x/W*(N-1))));
     var dx=lastX===null?0:x-lastX;lastX=x;
-    var f=Math.min(7,Math.abs(dx)*.35+1.2);
+    var f=Math.min(2.2,Math.abs(dx)*.1+.35);
     for(var o=-4;o<=4;o++){var j=i+o;if(j>=0&&j<N)v[j]+=f*Math.exp(-o*o/6)}
   });
   box.parentNode.addEventListener('mouseleave',function(){lastX=null});
