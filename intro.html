@@ -167,9 +167,14 @@ body{background:#0a0a0a}
 .side .soc{animation-delay:.45s!important}
 @media (max-width:700px){.side{top:40%!important;transform:translateY(-50%)!important}}
 
-/* clear glass box around the menu */
-.side{background:rgba(255,255,255,.035)!important;border:1px solid rgba(255,255,255,.12);border-radius:18px!important;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);padding:30px 56px 28px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
-@media (max-width:700px){.side{padding:26px 18px 24px!important;left:24px!important;right:24px!important}}
+/* clear brown box that glides under the menu item your mouse is on */
+.menu{position:relative}
+.menu li{position:relative;z-index:1}
+.menu a{display:inline-block;padding:3px 14px!important;border-radius:8px}
+.menu a:hover{padding-left:14px!important}
+.hl{position:absolute;z-index:0;left:0;top:0;width:0;height:0;border-radius:8px;background:rgba(185,142,98,.16);border:1px solid rgba(210,174,132,.32);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:transform .35s cubic-bezier(.2,.8,.2,1),width .35s cubic-bezier(.2,.8,.2,1),height .35s,opacity .25s}
+.menu.on .hl{opacity:1}
+@media (prefers-reduced-motion:reduce){.hl{transition:opacity .2s}}
 </style></head><body>
 <div class="bwwrap">
 <section class="hero" id="hero"><div class="scene"><div class="bg sky"></div><div class="bg rid"></div></div><div class="bigw"><svg class="draw" viewBox="0 -60 1400 760" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><defs><linearGradient id="og" x1="0" x2="1"><stop offset="0" stop-color="#5A361A"/><stop offset=".5" stop-color="#D2AE84"/><stop offset="1" stop-color="#5A361A"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="6"/></filter></defs><g transform="rotate(-6 700 330)"><text x="700" y="430" text-anchor="middle" class="t glowt">Loftwell</text><text x="700" y="430" text-anchor="middle" class="t">Loftwell</text></g></svg></div>
@@ -194,6 +199,18 @@ document.querySelectorAll('[data-go]').forEach(a=>a.addEventListener('click',e=>
  const h=a.getAttribute('href').replace('./','');
  if(window.parent!==window){e.preventDefault();window.parent.postMessage({lw:'go',hash:h},'*')}else{a.target='_self'}}));
 </script></div>
+
+<script>
+(function(){
+  var menu=document.querySelector('.menu');if(!menu)return;
+  var hl=document.createElement('span');hl.className='hl';hl.setAttribute('aria-hidden','true');menu.appendChild(hl);
+  function to(a){var m=menu.getBoundingClientRect(),r=a.getBoundingClientRect();
+    hl.style.width=r.width+'px';hl.style.height=r.height+'px';hl.style.transform='translate('+(r.left-m.left)+'px,'+(r.top-m.top)+'px)';menu.classList.add('on')}
+  menu.querySelectorAll('a').forEach(function(a){a.addEventListener('mouseenter',function(){to(a)});a.addEventListener('focus',function(){to(a)})});
+  menu.addEventListener('mouseleave',function(){menu.classList.remove('on')});
+  menu.addEventListener('focusout',function(e){if(!menu.contains(e.relatedTarget))menu.classList.remove('on')});
+})();
+</script>
 
 <script>
 (function(){
