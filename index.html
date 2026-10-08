@@ -331,6 +331,16 @@ header nav{gap:24px;flex-wrap:nowrap;white-space:nowrap}
 .head-cta .btn{white-space:nowrap}
 .faq-line{margin:6px 0 0;font-size:16px;color:var(--muted)}.faq-line a{color:var(--accent);font-weight:500}
 </style>
+<style>
+/* Loftwell script sitting softly behind the hero headline, like a picture behind it */
+.hero{position:relative;overflow:hidden}
+.hero-copy{position:relative;z-index:1}
+.hero-mark{position:absolute;z-index:0;left:clamp(-40px,2vw,40px);top:50%;font-family:'Pinyon Script',cursive;font-weight:400;font-size:clamp(170px,26vw,400px);line-height:1;white-space:nowrap;color:rgba(122,75,38,.07);transform:translateY(-46%) rotate(-7deg);pointer-events:none;user-select:none;animation:markin 1.6s cubic-bezier(.2,.7,.2,1) .15s both}
+@keyframes markin{from{opacity:0;transform:translateY(-40%) rotate(-7deg) scale(1.06)}to{opacity:1;transform:translateY(-46%) rotate(-7deg) scale(1)}}
+body.intro-on .hero-mark{animation-play-state:paused}
+@media (max-width:700px){.hero-mark{font-size:46vw;left:-4vw;top:38%}}
+@media (prefers-reduced-motion:reduce){.hero-mark{animation:none}}
+</style>
 <style id="lw-light">
 /* White + brown theme, no glow. Header keeps its original dark look. */
 :root{--accent:#7A4B26;--accent-dark:#5A361A;--tan:#D2AE84;--ink:#2A1C12;--muted:#6A5A4C;--soft:#8C7B6C;--paper:#FFFFFF;--stone:#F7F2EB;--line:#E7DDD1;--white:#FFFFFF}
@@ -399,6 +409,7 @@ header .offer{border-bottom-color:#D2AE84}
 <main id="top">
 
 <section class="hero">
+  <span class="hero-mark" aria-hidden="true">Loftwell</span>
   <div class="hero-copy">
     <span class="eyebrow">Websites for local businesses</span>
     <h1>A website that makes your <em>phone ring.</em></h1>
