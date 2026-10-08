@@ -161,18 +161,22 @@ body{background:#0a0a0a}
 .bigw.fade{transition:opacity .8s ease;opacity:0}
 
 /* clean: no top logo, the big Loftwell below is the name */
-.side{top:30%!important}
+.side{top:26%!important}
 .side .est{animation-delay:.15s!important;margin-top:0!important}
 .side .menu{animation-delay:.3s!important;margin-top:20px!important}
 .side .soc{animation-delay:.45s!important}
 @media (max-width:700px){.side{top:40%!important;transform:translateY(-50%)!important}}
+
+/* clear glass box around the menu */
+.side{background:rgba(255,255,255,.035)!important;border:1px solid rgba(255,255,255,.12);border-radius:18px!important;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);padding:30px 56px 28px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+@media (max-width:700px){.side{padding:26px 18px 24px!important;left:24px!important;right:24px!important}}
 </style></head><body>
 <div class="bwwrap">
 <section class="hero" id="hero"><div class="scene"><div class="bg sky"></div><div class="bg rid"></div></div><div class="bigw"><svg class="draw" viewBox="0 -60 1400 760" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><defs><linearGradient id="og" x1="0" x2="1"><stop offset="0" stop-color="#5A361A"/><stop offset=".5" stop-color="#D2AE84"/><stop offset="1" stop-color="#5A361A"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="6"/></filter></defs><g transform="rotate(-6 700 330)"><text x="700" y="430" text-anchor="middle" class="t glowt">Loftwell</text><text x="700" y="430" text-anchor="middle" class="t">Loftwell</text></g></svg></div>
 <canvas id="dust" aria-hidden="true"></canvas>
 <div class="orb o1"></div><div class="orb o2"></div>
-<div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i>
-<span class="lab l1">MEDFORD, WISCONSIN</span><span class="lab l2">WEBSITES &amp; CARE</span><span class="lab l3">45.14°N &nbsp;90.35°W</span><span class="lab l4">© 2026</span></div><div class="shade"></div><div class="edge"></div><div class="grain"></div>
+<div class="frame">
+<span class="lab l1">MEDFORD, WISCONSIN</span><span class="lab l2">WEBSITES &amp; CARE</span></div><div class="shade"></div><div class="edge"></div><div class="grain"></div>
 <div class="type"><span id="tt"></span><span class="cur"></span></div>
 <div class="side"><div class="est">EST. 2026</div><div class="rule2"></div>
 <ul class="menu"><li><a href="./#top" data-go><span class="n">1.</span>what i do</a></li><li><a href="./#how" data-go><span class="n">2.</span>how it works</a></li><li><a href="./#price" data-go><span class="n">3.</span>pricing</a></li><li><a href="./#plans" data-go><span class="n">4.</span>monthly plans</a></li><li><a href="./#story" data-go><span class="n">5.</span>my story</a></li><li><a href="./#contact" data-go><span class="n">6.</span>contact</a></li></ul>
