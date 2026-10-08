@@ -154,9 +154,15 @@ body{background:#0a0a0a}
 .type{top:24px!important}
 }
 @media (prefers-reduced-motion:reduce){.draw .t{animation:none;stroke-dashoffset:0}.orb{animation:none}.side>*{animation:none;opacity:1;transform:none}}
+
+/* dust letters: the outline Loftwell turns into glowing dust you can push around (computers only) */
+#dust{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0;transition:opacity .8s ease}
+#dust.on{opacity:1}
+.bigw.fade{transition:opacity .8s ease;opacity:0}
 </style></head><body>
 <div class="bwwrap">
 <section class="hero" id="hero"><div class="scene"><div class="bg sky"></div><div class="bg rid"></div></div><div class="bigw"><svg class="draw" viewBox="0 -60 1400 760" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><defs><linearGradient id="og" x1="0" x2="1"><stop offset="0" stop-color="#5A361A"/><stop offset=".5" stop-color="#D2AE84"/><stop offset="1" stop-color="#5A361A"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="6"/></filter></defs><g transform="rotate(-6 700 330)"><text x="700" y="430" text-anchor="middle" class="t glowt">Loftwell</text><text x="700" y="430" text-anchor="middle" class="t">Loftwell</text></g></svg></div>
+<canvas id="dust" aria-hidden="true"></canvas>
 <div class="orb o1"></div><div class="orb o2"></div>
 <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i>
 <span class="lab l1">MEDFORD, WISCONSIN</span><span class="lab l2">WEBSITES &amp; CARE</span><span class="lab l3">45.14°N &nbsp;90.35°W</span><span class="lab l4">© 2026</span></div><div class="shade"></div><div class="edge"></div><div class="grain"></div>
@@ -177,5 +183,55 @@ document.querySelectorAll('[data-go]').forEach(a=>a.addEventListener('click',e=>
  const h=a.getAttribute('href').replace('./','');
  if(window.parent!==window){e.preventDefault();window.parent.postMessage({lw:'go',hash:h},'*')}else{a.target='_self'}}));
 </script></div>
+
+<script>
+(function(){
+  // Only on computers with a mouse. Phones and reduced-motion keep the still outline.
+  var fine=window.matchMedia&&window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!fine||reduce||window.innerWidth<=700)return;
+  var cv=document.getElementById('dust'),ctx=cv.getContext('2d'),hero=document.getElementById('hero');
+  var g=document.querySelector('.draw g'),wrap=document.querySelector('.bigw');
+  if(!cv||!g)return;
+  var W,H,dpr,pts=[],mouse={x:-9999,y:-9999,on:false},t=0,started=false;
+  // tan-to-brown gradient across the word, same as the outline
+  function col(u){var a=[150,100,60],b=[236,205,166],k=1-Math.abs(u*2-1);return [a[0]+(b[0]-a[0])*k,a[1]+(b[1]-a[1])*k,a[2]+(b[2]-a[2])*k]}
+  function build(){
+    var r=hero.getBoundingClientRect();dpr=Math.min(window.devicePixelRatio||1,2);W=Math.round(r.width);H=Math.round(r.height);
+    cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+    var off=document.createElement('canvas');off.width=W;off.height=H;var o=off.getContext('2d');
+    var m=g.getScreenCTM();o.setTransform(m.a,m.b,m.c,m.d,m.e-r.left,m.f-r.top);
+    o.font='380px "Pinyon Script", cursive';o.textAlign='center';o.textBaseline='alphabetic';
+    o.lineWidth=2.6/Math.hypot(m.a,m.b);o.strokeStyle='#fff';o.strokeText('Loftwell',700,430);
+    var d=o.getImageData(0,0,W,H).data,raw=[],minx=W,maxx=0;
+    for(var y=0;y<H;y+=2)for(var x=0;x<W;x+=2)if(d[(y*W+x)*4+3]>90){raw.push([x,y]);if(x<minx)minx=x;if(x>maxx)maxx=x}
+    var old=pts;pts=[];var span=Math.max(1,maxx-minx);
+    for(var i=0;i<raw.length;i++){
+      var p=raw[i],dust=Math.random()<.28,jx=dust?(Math.random()-.5)*16:0,jy=dust?(Math.random()-.5)*16:0;
+      var c=Math.random()<.07?[247,236,218]:col((p[0]-minx)/span),q=old[i];
+      pts.push({tx:p[0]+jx,ty:p[1]+jy,x:q?q.x:p[0]+jx,y:q?q.y:p[1]+jy,vx:0,vy:0,c:c,a:dust?Math.random()*.35+.25:Math.random()*.3+.7,s:dust?Math.random()*1+.8:Math.random()*1+1.4,ph:Math.random()*6.28})
+    }
+  }
+  function frame(){
+    t++;var R=130,R2=R*R;ctx.clearRect(0,0,W,H);ctx.globalCompositeOperation='lighter';
+    for(var i=0;i<pts.length;i++){var p=pts[i];
+      p.vx+=(p.tx+Math.sin(t*.012+p.ph)*.8-p.x)*.03;p.vy+=(p.ty+Math.cos(t*.014+p.ph)*.8-p.y)*.03;
+      if(mouse.on){var dx=p.x-mouse.x,dy=p.y-mouse.y,d2=dx*dx+dy*dy;if(d2<R2){var dd=Math.sqrt(d2)||1,f=(1-dd/R)*7;p.vx+=dx/dd*f;p.vy+=dy/dd*f}}
+      p.vx*=.85;p.vy*=.85;p.x+=p.vx;p.y+=p.vy;
+      var tw=.75+.25*Math.sin(t*.03+p.ph);
+      ctx.fillStyle='rgba('+(p.c[0]|0)+','+(p.c[1]|0)+','+(p.c[2]|0)+','+(p.a*tw).toFixed(3)+')';
+      ctx.fillRect(p.x-p.s/2,p.y-p.s/2,p.s,p.s);
+    }
+    ctx.globalCompositeOperation='source-over';requestAnimationFrame(frame);
+  }
+  function start(){if(started)return;started=true;build();cv.classList.add('on');wrap.classList.add('fade');requestAnimationFrame(frame)}
+  window.addEventListener('mousemove',function(e){var r=hero.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top;mouse.on=true},{passive:true});
+  document.addEventListener('mouseleave',function(){mouse.on=false});
+  var rt;window.addEventListener('resize',function(){if(!started)return;clearTimeout(rt);rt=setTimeout(function(){wrap.classList.remove('fade');build();wrap.classList.add('fade')},150)});
+  // Let the outline finish drawing itself, then turn it into dust
+  var ready=document.fonts&&document.fonts.load?document.fonts.load('380px "Pinyon Script"'):Promise.resolve();
+  ready.catch(function(){}).then(function(){setTimeout(start,4900)});
+})();
+</script>
 
 </body></html>
