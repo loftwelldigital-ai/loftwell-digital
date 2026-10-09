@@ -715,12 +715,7 @@ h.querySelectorAll('nav a,.head-cta a').forEach(function(a){a.addEventListener('
   function frame(){if(!visible){running=false;return}t+=1/60;step();draw();requestAnimationFrame(frame)}
   size();draw();
   if(!live){window.addEventListener('resize',function(){size();draw()});return}
-  // phones: a touch makes a ripple, and scrolling past gives the waves a gentle bounce
-  function poke(x,f){var i=Math.max(1,Math.min(N-2,Math.round(x/W*(N-1))));for(var o=-6;o<=6;o++){var j=i+o;if(j>=0&&j<N)v[j]+=f*Math.exp(-o*o/14)}}
-  box.parentNode.addEventListener('touchstart',function(e){var r=box.getBoundingClientRect(),t0=e.touches[0];poke(t0.clientX-r.left,1.6)},{passive:true});
-  var tx=null;box.parentNode.addEventListener('touchmove',function(e){var r=box.getBoundingClientRect(),t0=e.touches[0],x=t0.clientX-r.left;if(tx!==null&&Math.abs(x-tx)>6){poke(x,1)}tx=x},{passive:true});
-  box.parentNode.addEventListener('touchend',function(){tx=null},{passive:true});
-  var lastY=window.scrollY;window.addEventListener('scroll',function(){var dy=window.scrollY-lastY;lastY=window.scrollY;if(!visible||mouseOK)return;var f=Math.min(1.2,Math.abs(dy)*.03);if(f>.05){poke(W*(.2+Math.random()*.6),f)}},{passive:true});
+  // phones: the waves just roll by on their own (no touch or scroll effects)
   if(mouseOK)box.parentNode.addEventListener('mousemove',function(e){
     var r=box.getBoundingClientRect();if(e.clientY<r.top-40||e.clientY>r.bottom+40){lastX=null;return}
     var x=e.clientX-r.left,i=Math.max(1,Math.min(N-2,Math.round(x/W*(N-1))));
@@ -728,7 +723,7 @@ h.querySelectorAll('nav a,.head-cta a').forEach(function(a){a.addEventListener('
     var f=Math.min(1.4,Math.abs(dx)*.07+.25);
     for(var o=-6;o<=6;o++){var j=i+o;if(j>=0&&j<N)v[j]+=f*Math.exp(-o*o/14)}
   });
-  box.parentNode.addEventListener('mouseleave',function(){lastX=null});
+  if(mouseOK)box.parentNode.addEventListener('mouseleave',function(){lastX=null});
   new IntersectionObserver(function(es){visible=es[0].isIntersecting;if(visible&&!running){running=true;requestAnimationFrame(frame)}}).observe(box);
   window.addEventListener('resize',function(){size();draw()});
 })();
