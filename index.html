@@ -349,16 +349,11 @@ main>section{position:relative}
 @media (max-width:700px){.so-waves{height:100px;margin-top:16px}}
 </style>
 <style>
-/* scroll story: hero lifts away, then a statement fills in word by word */
-.reveal{position:relative;z-index:1;padding:clamp(40px,8vw,110px) var(--gutter) clamp(70px,10vw,140px)}
-.reveal p{margin:0 auto;max-width:1000px;font-family:var(--serif);font-weight:500;font-size:clamp(30px,4.4vw,58px);line-height:1.18;letter-spacing:-.01em;text-wrap:balance}
-.reveal .w{color:rgba(26,20,16,.14);transition:color .35s ease}
-.reveal .w.on{color:var(--ink)}
-.reveal .w.on em,.reveal em.w.on{color:var(--accent)}
-.reveal .chip{display:inline-block;width:1.05em;height:.72em;margin:0 .08em;border-radius:.36em;vertical-align:-.04em;background:linear-gradient(135deg,var(--tan),var(--accent));opacity:.25;transition:opacity .35s ease}
-.reveal .chip.on{opacity:1}
+/* scroll story: hero lifts away, headings and paragraphs fill in word by word */
+.sr .w{opacity:.16;transition:opacity .35s ease}
+.sr .w.on{opacity:1}
 .hero-copy{will-change:transform,opacity}
-@media (prefers-reduced-motion:reduce){.reveal .w{color:var(--ink)}.reveal .chip{opacity:1}}
+@media (prefers-reduced-motion:reduce){.sr .w{opacity:1}}
 </style>
 </head>
 <body>
@@ -418,10 +413,6 @@ main>section{position:relative}
     </div>
     <ul class="trust"><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>No money up front</li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>Pay only if you love it</li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>2 rounds of changes included</li></ul>
   </div>
-</section>
-
-<section class="reveal" aria-label="About Loftwell Digital">
-  <p>Loftwell Digital builds <span class="chip" aria-hidden="true"></span> clean, custom websites for local businesses. I design yours from scratch, show it to you first, and you only pay if you <em>love it.</em> No templates, no money up front, just a site <span class="chip" aria-hidden="true"></span> that makes your phone ring.</p>
 </section>
 
 <section class="features grid3">
@@ -718,24 +709,22 @@ h.querySelectorAll('nav a,.head-cta a').forEach(function(a){a.addEventListener('
 
 <script>
 (function(){
-  var p=document.querySelector('.reveal p');if(!p)return;
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  // wrap every word so it can fill in one at a time
-  (function wrap(node){[].slice.call(node.childNodes).forEach(function(n){
-    if(n.nodeType===3){var f=document.createDocumentFragment();n.textContent.split(/(\s+)/).forEach(function(t){if(!t)return;if(/^\s+$/.test(t)){f.appendChild(document.createTextNode(t))}else{var sp=document.createElement('span');sp.className='w';sp.textContent=t;f.appendChild(sp)}});n.parentNode.replaceChild(f,n)}
-    else if(n.nodeType===1&&!n.classList.contains('chip'))wrap(n)})})(p);
-  var items=[].slice.call(p.querySelectorAll('.w,.chip'));
   var hero=document.querySelector('.hero-copy');
-  if(reduce){items.forEach(function(e){e.classList.add('on')});return}
+  var sel='main h2, main .lede, .about-copy p, .story-body p, .story blockquote, .closing .note, .why p, .step p';
+  var blocks=[].slice.call(document.querySelectorAll(sel)).filter(function(el){return !el.closest('.hero')});
+  function wrap(node){[].slice.call(node.childNodes).forEach(function(n){
+    if(n.nodeType===3){if(!n.textContent.trim())return;var f=document.createDocumentFragment();n.textContent.split(/(\s+)/).forEach(function(t){if(!t)return;if(/^\s+$/.test(t)){f.appendChild(document.createTextNode(t))}else{var sp=document.createElement('span');sp.className='w';sp.textContent=t;f.appendChild(sp)}});n.parentNode.replaceChild(f,n)}
+    else if(n.nodeType===1&&!/^(A|BUTTON|SVG|svg)$/.test(n.tagName))wrap(n)})}
+  if(reduce)return;
+  var list=blocks.map(function(el){el.classList.add('sr');wrap(el);return {el:el,w:[].slice.call(el.querySelectorAll('.w'))}});
   var ticking=false;
   function update(){
-    ticking=false;var vh=window.innerHeight,r=p.getBoundingClientRect();
-    // progress runs from when the paragraph enters the bottom of the screen to when it reaches the middle
-    var prog=Math.max(0,Math.min(1,(vh*0.92-r.top)/(vh*0.92-vh*0.35+r.height*0.4)));
-    var n=Math.round(prog*items.length);
-    for(var i=0;i<items.length;i++)items[i].classList.toggle('on',i<n);
-    // the hero text drifts up and fades as you leave it
-    if(hero){var y=window.scrollY,k=Math.min(1,y/(vh*0.8));hero.style.transform='translateY('+(-k*60)+'px)';hero.style.opacity=String(1-k*0.85)}
+    ticking=false;var vh=window.innerHeight;
+    list.forEach(function(b){var r=b.el.getBoundingClientRect();
+      var prog=Math.max(0,Math.min(1,(vh*0.92-r.top)/(vh*0.42+r.height*0.35)));
+      var n=Math.round(prog*b.w.length);for(var i=0;i<b.w.length;i++)b.w[i].classList.toggle('on',i<n)});
+    if(hero){var k=Math.min(1,window.scrollY/(vh*0.8));hero.style.transform='translateY('+(-k*60)+'px)';hero.style.opacity=String(1-k*0.85)}
   }
   window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(update)}},{passive:true});
   window.addEventListener('resize',update);update();
