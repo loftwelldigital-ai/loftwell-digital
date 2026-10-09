@@ -351,10 +351,10 @@ main>section{position:relative}
 <style>
 /* hover zoom on price and plan cards: the card under the mouse comes forward, the others step back (computers only) */
 @media (hover:hover) and (pointer:fine){
-  .price-cards .card,.plans .grid3 .card{transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .45s ease,filter .45s ease,box-shadow .45s ease;transform-origin:center;will-change:transform}
-  .price-cards:hover .card,.plans .grid3:hover .card{opacity:.55;transform:scale(.97);filter:saturate(.85)}
-  .price-cards .card:hover,.plans .grid3 .card:hover{opacity:1;transform:scale(1.06);filter:none;box-shadow:0 34px 70px rgba(26,20,16,.18);z-index:2;position:relative}
-  .plans .grid3 .card.featured:hover{box-shadow:0 34px 70px rgba(26,20,16,.35)}
+  .price-cards .card,.plans .grid3 .card{transition:transform .7s cubic-bezier(.22,.61,.36,1),opacity .7s ease,filter .7s ease,box-shadow .7s ease;transform-origin:center;will-change:transform}
+  .price-cards:hover .card,.plans .grid3:hover .card{opacity:.82;transform:scale(.99);filter:none}
+  .price-cards .card:hover,.plans .grid3 .card:hover{opacity:1;transform:scale(1.025);filter:none;box-shadow:0 22px 48px rgba(26,20,16,.12);z-index:2;position:relative}
+  .plans .grid3 .card.featured:hover{box-shadow:0 22px 48px rgba(26,20,16,.25)}
 }
 @media (prefers-reduced-motion:reduce){.price-cards .card,.plans .grid3 .card{transition:none!important;transform:none!important}}
 </style>
